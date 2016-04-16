@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p,blockquote,th,td
+	{
+	margin: 0;
+	padding: 0
+}
+
+body {
+	font-family: 宋体, arial, georgia, verdana, helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+div{
+	display:block;
+	position: relative;
+}
+
+a{
+	
+	text-decoration: none
+}
+
+a:visited {
+	color:blue;
+	text-decoration:none;
+}

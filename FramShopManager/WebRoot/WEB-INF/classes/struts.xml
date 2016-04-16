@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.maxSize" value="40960000"/>
+	<package name="loginAuth" extends="struts-default" namespace="/Login">
+
+		<interceptors>
+			<interceptor name="loginJudge"
+				class="cn.edu.fjnu.shop.interceptor.LoginInterceptor">
+			</interceptor>
+
+			<!-- 自定义拦截器栈 -->
+			<interceptor-stack name="myDefaultStack">
+				<interceptor-ref name="loginJudge"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 将自定义拦截器栈设置默认的拦截器 -->
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+		
+	</package>
+
+	<package name="cn.edu.fjnu.shop.user" namespace="/User"
+		extends="loginAuth">
+		<action name="Login" class="cn.edu.fjnu.shop.action.LoginAction"
+			method="login">
+			<result name="success">../views/main.jsp</result>
+			<result name="input">../login.jsp</result>
+		</action>
+		<action name="UserManager" class="cn.edu.fjnu.shop.action.UserManagerAction"
+			method="userManager">
+			<result name="success">../views/user_manager.jsp</result>
+			<result name="search" type="chain">UserSearch</result>
+		</action>
+
+		<action name="UserChange" class="cn.edu.fjnu.shop.action.UserManagerAction"
+			method="changeUser">
+			<result name="success">../views/user_change.jsp</result>
+		</action>
+
+		<action name="CommitChange" class="cn.edu.fjnu.shop.action.UserManagerAction"
+			method="commitChange">
+			<result name="success" type="chain">UserManager</result>
+		</action>
+
+		<action name="UserSearch" class="cn.edu.fjnu.shop.action.UserManagerAction"
+			method="searchUser">
+			<result name="success">../views/user_manager.jsp</result>
+		</action>
+
+		<action name="CommitAdd" class="cn.edu.fjnu.shop.action.UserManagerAction"
+			method="commitAdd">
+			<result name="success">../views/user_manager.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="cn.edu.fjnu.shop.product" namespace="/Product"
+		extends="loginAuth">
+		<action name="ProductManager" class="cn.edu.fjnu.shop.action.ProductManagerAction"
+			method="showProduct">
+			<result name="success">../views/product/product_show.jsp</result>
+			<result name="search" type="chain">ProductSearch</result>
+		</action>
+		<action name="ProductChange" class="cn.edu.fjnu.shop.action.ProductManagerAction"
+			method="changeProduct">
+			<result name="success">../views/product/product_change.jsp</result>
+		</action>
+		<action name="CommitChange" class="cn.edu.fjnu.shop.action.ProductManagerAction"
+			method="commitChange">
+
+			<interceptor-ref name="fileUpload">
+
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+
+				<!-- 配置允许上传的文件大小,最大为20m -->
+				<param name="maximumSize">20480000</param>
+
+			</interceptor-ref>
+
+			<!-- 配置struts2的默认拦截器栈 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+
+			<result name="success" type="chain">ProductManager</result>
+			<result name="input" type="chain">ProductManager</result>
+		</action>
+		<action name="ProductSearch" class="cn.edu.fjnu.shop.action.ProductManagerAction"
+			method="searchProduct">
+			<result name="success">../views/product/product_show.jsp</result>
+		</action>
+		<action name="CommitAdd" class="cn.edu.fjnu.shop.action.ProductManagerAction"
+			method="commitAdd">
+			<interceptor-ref name="fileUpload">
+
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+
+				<!-- 配置允许上传的文件大小,最大为20m -->
+				<param name="maximumSize">20480000</param>
+
+			</interceptor-ref>
+
+			<!-- 配置struts2的默认拦截器栈 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">../views/product/product_show.jsp</result>
+			<result name="input">../views/product/product_add.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="cn.edu.fjnu.shop.order" namespace="/Order"
+		extends="loginAuth">
+		<action name="OrderManager" class="cn.edu.fjnu.shop.action.OrderManagerAction"
+			method="orderManager">
+			<result name="success">../views/order/order_show.jsp</result>
+			<result name="search" type="chain">OrderSearch</result>
+		</action>
+
+		<action name="OrderChange" class="cn.edu.fjnu.shop.action.OrderManagerAction"
+			method="changeOrder">
+			<result name="success">../views/order/order_change.jsp</result>
+		</action>
+
+		<action name="CommitChange" class="cn.edu.fjnu.shop.action.OrderManagerAction"
+			method="commitChange">
+			<result name="success" type="chain">OrderManager</result>
+		</action>
+
+		<action name="OrderSearch" class="cn.edu.fjnu.shop.action.OrderManagerAction"
+			method="searchOrder">
+			<result name="success">../views/order/order_show.jsp</result>
+		</action>
+
+		<action name="CommitAdd" class="cn.edu.fjnu.shop.action.OrderManagerAction"
+			method="commitAdd">
+			<result name="success">../views/order/order_show.jsp</result>
+		</action>
+	</package>
+
+	<package name="cn.edu.fjnu.shop.access" namespace="/Access"
+		extends="loginAuth">
+		<action name="AccessManager" class="cn.edu.fjnu.shop.action.AccessManagerAction"
+			method="accessManager">
+			<result name="success">../views/access/access_show.jsp</result>
+			<result name="search" type="chain">AccessSearch</result>
+		</action>
+
+		<action name="AccessSearch" class="cn.edu.fjnu.shop.action.AccessManagerAction"
+			method="searchAccess">
+			<result name="success">../views/access/access_show.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="cn.edu.fjnu.shop.feedback" namespace="/FeedBack"
+		extends="loginAuth">
+		<action name="FeedBackManager" class="cn.edu.fjnu.shop.action.FeedBackManagerAction"
+			method="feedbackManager">
+			<result name="success">../views/feedback/feedback_show.jsp</result>
+			<result name="search" type="chain">FeedBackSearch</result>
+		</action>
+
+		<action name="FeedBackSearch" class="cn.edu.fjnu.shop.action.FeedBackManagerAction"
+			method="searchFeedBack">
+			<result name="success">../views/feedback/feedback_show.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="cn.edu.fjnu.shop.admin" namespace="/Admin"
+		extends="loginAuth">
+		<action name="PasswordChange" class="cn.edu.fjnu.shop.action.AdminAction"
+			method="changePassword">
+			<result name="success" type="chain">SystemExit</result>
+			<result name="input">../views/password/password_change.jsp</result>
+		</action>
+
+		<action name="SystemExit" class="cn.edu.fjnu.shop.action.AdminAction"
+			method="exitSystem">
+			<result name="login">../login.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="cn.edu.fjnu.shop.information" namespace="/Information"
+		extends="loginAuth">
+		<action name="InformationManager" class="cn.edu.fjnu.shop.action.InformationManagerAction"
+			method="informationManager">
+			<result name="success">../views/information/information_show.jsp</result>
+		</action>
+		<action name="CommitAdd" class="cn.edu.fjnu.shop.action.InformationManagerAction"
+			method="commitAdd">
+			<interceptor-ref name="fileUpload">
+
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+
+				<!-- 配置允许上传的文件大小,最大为20m -->
+				<param name="maximumSize">20480000</param>
+
+			</interceptor-ref>
+
+			<!-- 配置struts2的默认拦截器栈 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">../views/information/information_success.jsp</result>
+		</action>
+	</package>
+	
+</struts>

@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+#title{
+	text-align:center;
+	font-size:18sp;
+}
+
+
+
+#sl_search_id{
+	
+	width:10%;
+	margin-left:10px;
+}
+
+#search_id{
+	width:20%;
+	
+}
+
+#tb_feedbacks{
+	width:100%;
+	text-align:center;
+	
+}
+#tb_head{
+	background-color:#00ce44;
+	height:40px;
+	color:#fff;
+}
+
+.tr_feedbacks_content td{
+	
+	height:30px;
+	border-color:#e4e4e4;
+	border-width: 1px;
+	border-style:dashed;
+	border-bottom-color: #00ce44;
+}
+#tf_go_page{
+	
+	width:5%;
+}

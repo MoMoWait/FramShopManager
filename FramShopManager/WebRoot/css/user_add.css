@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+#container{
+ 	width:100%;
+ 	
+ }
+ 
+#title{
+	text-align:center;
+	font-size:18sp;
+	font-weight: bold;
+}
+ 
+ #tf_user_name{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ #sl_user_sex{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+  #tf_user_address{
+  
+ 	width:40%;
+ 	height:30px;
+ }
+
+  #tf_user_phone{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+ div{
+ 	margin-top:10px;
+ 	margin-bottom:10px;	
+ }
+ tr{
+ 
+ 
+	margin-top:10px;
+ 	margin-bottom:10px;	
+ }
+  td{
+ 	text-align:left;
+ 	margin-top:10px;
+ 	margin-bottom:10px;
+ 	
+ }
+ 
+ #sb_user_sub{
+ 
+ 	width:15%;
+ 	height:30px;
+ }
+ #btn_cancel_change{
+ 	width:15%;
+ 	height:30px;
+ }
+ #tb_add_user{
+ 	width:100%;
+ 	
+ }

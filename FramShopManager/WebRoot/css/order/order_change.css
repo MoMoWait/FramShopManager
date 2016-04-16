@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+#container{
+ 	width:100%;
+ 	
+ }
+ 
+#title{
+	text-align:center;
+	font-size:18sp;
+	font-weight: bold;
+}
+ 
+ 
+ #tf_order_id{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+ #tf_order_password{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+  #tf_order_name{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ #sl_order_sex{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+  #tf_order_address{
+  
+ 	width:43%;
+ 	height:30px;
+ }
+ 
+ #tf_order_account{
+ 
+ 	
+ 	width:40%;
+ 	height:30%;
+ }
+ 
+ #tf-order_address{
+ 	width:40%;
+ 	height:30px;
+ }
+  #tf_order_phone{
+ 
+ 	width:20%;
+ 	height:30px;
+ }
+ 
+ div{
+ 	margin-left:10px;
+ 	margin-top:10px;
+ 	margin-bottom:10px;
+ }
+ 
+ #sb_order_sub{
+ 
+ 	width:15%;
+ 	height:30px;
+ }
+ #btn_cancel_change{
+ 	width:15%;
+ 	height:30px;
+ }

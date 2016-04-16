@@ -1,0 +1,40 @@
+ center@CHARSET "UTF-8";
+ #container{
+ 	width:100%;
+ 	
+ }
+#leftMenu{
+	width:20%;
+	height:100%;
+	background-color: #fff;
+	float:left;
+}
+
+#rightContent{
+	
+	width:80%;
+	height:100%;
+	float:right;
+	background-color: #e4e4e4;
+}
+
+#text_nav{
+	background-color: #00ce44;
+	color: #fff;
+	font-size: 25;
+	height:40px;
+	text-align:center;
+	padding-top: 7px;
+}
+
+#list_nav li{
+	list-style: none;
+	border-width: 1px;
+	border-color: #fff;
+	border-style:dashed;
+	border-bottom-color: red;
+	font-size: 20px;
+	height:40px;
+	text-align:center;
+	padding-top:7px;
+}
